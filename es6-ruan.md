@@ -241,6 +241,8 @@
 	* for await ... of
 	* 异步Generator函数 是async与generator的结合
 ## Class的基本用法
+	* 类的所有方法都定义在类的prototype属性上面。
+		- 类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
 
 
 

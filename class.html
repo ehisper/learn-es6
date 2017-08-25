@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    	// function Point (x,y) {
+    	// 	this.x = x 
+    	// 	this.y = y
+    	// 	console.log('构造函数中this',this)
+    	// }    
+    	// Point.prototype.stringXY = function () {
+    	// 	// return `(${this.x+this.y})`
+    	// 	console.log('实例属性中this',this)
+    	// 	// 
+    	// }
+    	// let p = new Point(1,2)
+    	// // console.log(p.x,p.y)//1,2
+    	// console.log(p.stringXY())//(3)
+    	// console.log(Object.keys(Point.prototype))//['stringXY']
+    	// console.log(Object.getOwnPropertyNames(Point.prototype))//['constructor','"stringXY"']
+    	// class Point {
+
+    	// 	constructor (x,y) {
+    	// 		this.x = x  
+    	// 		this.y = y
+    	// 	}
+
+    	// 	stringXY () {
+    	// 		return `${this.x + this.y}`
+    	// 	}
+    	// }
+    	// let p = new Point(1,22)
+    	// // console.log( typeof Point)//function
+    	// // console.log( Point === Point.prototype.constructor)//true
+    	// // console.log( p.stringXY())//3
+    	// Object.assign(Point.prototype,{
+    	// 	to(){},
+    	// 	a() {}
+    	// })
+    	// console.log(Point.prototype)
+    	// console.log(p)
+    	// console.log(Object.keys(Point.prototype))//['to','a']
+    	// console.log(Object.getOwnPropertyNames(Point.prototype))//['constructor','"stringXY"',to','a']
+    	// point.hasOwnProperty('x') // true
+		// point.hasOwnProperty('y') // true
+		// point.hasOwnProperty('toString') // false
+		// point.__proto__.hasOwnProperty('toString') // true
+		//     	// 
+    	// class F {
+    	// 	constructor () {
+    	// 		return Object.create(null)//默认return this
+    	// 	}
+    	// 	aaa() {}
+    	// }
+    	// console.log( new F() instanceof F)//false
+    	// console.dir( Object.getPrototypeOf(F))
+    	// __proto__并不是语言本身的特性，这是各大厂商具体实现时添加的私有属性，虽然目前很多现代浏览器的JS引擎中都提供了这个私有属性，但依旧不建议在生产中使用该属性，生产环境中，我们可以使用 Object.getPrototypeOf 方法来获取实例对象的原型
+    	// 
+    	// const myClass = class Me {
+    	// 	ab () {
+    	// 		return Me.name
+    	// 	}
+    	// 	//私有方法
+    	// 	_selfAb () {
+    	// 		return 'hello'
+    	// 	}
+    	// }//可省略 Me
+
+    	// let xm = new myClass()
+    	// console.log(xm.ab())
+    	// let person = new class{
+    	// 	constructor (name) {
+    	// 		this.name = name;
+    	// 	}
+    	// 	sayName () {
+    	// 		console.log(this.name)
+    	// 	}
+    	// }('zs')
+    	// person.sayName()//person是一个立即执行的类的实例。
+    	// 
+    	// 
+  //   	class Widget {
+		//   foo (baz) {
+		//     bar.call(this, baz);
+		//   }
+
+		//   // ...
+		// }
+
+		// function bar(baz) {
+		//   return this.snaf = baz;
+		// }
+		// (new Widget()).bar('ooo')//报错
+		// 		const bar = Symbol('bar');
+		// const snaf = Symbol('snaf');
+
+		// class myClass{
+
+		//   // 公有方法
+		//   foo(baz) {
+		//     this[bar](baz);
+		//   }
+
+		//   // 私有方法
+		//   [bar](baz) {
+		//     return this[snaf] = baz;
+		//   }
+
+		//   // ...
+		// };
+		// 
+		// class Logger {
+		// 	constructor (...args) {
+		// 		this.args = args
+		// 		// this.printName = this.printName.bind(this)
+		// 		this.printName = ( (name = 'there') => {
+		// 		    this.print(`Hello ${name}`);
+		// 		  })
+		// 	}
+		// 	*[Symbol.iterator] ( ) {
+		// 		for(let args of this.args){
+		// 			yield args;
+		// 		}
+		// 	}
+		// 	 get prop() {
+		// 	    return 'getter';
+		// 	  }
+		// 	  set prop(value) {
+		// 	    console.log('setter: '+value);
+		// 	  }
+		//   // printName(name = 'there') {
+		//   //   this.print(`Hello ${name}`);
+		//   // }
+
+		//   print(text) {
+		//     console.log(text);
+		//   }
+		//   static staticFn () {
+		//   		console.log('staticFn')
+		//   }
+		// }
+		// for( let x of new Logger('hello','world')){
+		// 	console.log(x)
+		// }
+		// const logger = new Logger();
+		// logger.printName()
+		// Logger.staticFn()
+		// const { printName } = logger;
+		// printName(); // TypeError: Cannot read property 'print' of undefined
+		// 
+		class F {
+			static aaa () {
+				return 'aaa'
+			}
+		}
+		class FE extends F {
+			static aaa () {
+				return super.aaa() + 'bbb'
+			}
+		}
+		console.log(FE.aaa())
+    </script>
+    </body>
+</html>
