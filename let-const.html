@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<script>
+    	
+    		const obj = Object.freeze({});//冻结后不能添加属性
+    		obj.a = 'a';//
+            delete obj.a
+    		// 'use strict'  Cannot add property a, object is not extensible
+    		const obj2 = {};//冻结后不能添加属性
+    		obj2.a = 'aaa';
+    		obj2.b = 'bbb';
+
+    		console.log(obj,obj2,Object.keys(obj2))
+
+    	</script>
+    </body>
+</html>

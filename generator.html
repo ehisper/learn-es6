@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    	// function* gen () {
+    	// 	yield 123+123;
+    	// 	return 123//只能有一个return完就结束了，多个yeild
+    	// }
+    	// let genIt = gen();
+    	// console.log(genIt.next())//{value:246,done:false}
+    	// console.log(genIt.next())//{value:123,done:true}
+    	// console.log(genIt.next())//{value:undefined ,done:true}
+    	
+  //   	function* dataConsumer() {
+		//   console.log('Started');
+		//   console.log(`1. ${yield}`);
+		//   console.log(`2. ${yield}`);
+		//   return 'result';
+		// }
+
+		// let genObj = dataConsumer();
+		// console.log(genObj.next());
+		// // Started
+		// console.log(genObj.next('a'))
+		// // 1. a
+		// console.log(genObj.next('b'))
+		// 2. b
+		// function *foo() {
+		//   yield 1;
+		//   yield 2;
+		//   return 3;
+		// }
+
+		// for (let v of foo()) {
+		//   console.log(v);
+		// }
+		// // 1 2 
+		// let fooIt = foo()
+		// console.log(fooIt.next());
+		// console.log(fooIt.next());
+		// console.log(fooIt.next());
+		// 
+		// function* fibonacci() {
+		//   let [prev, curr] = [0, 1];
+		//   for (;;) {
+		//     [prev, curr] = [curr, prev + curr];
+		//     yield curr;
+		//   }
+		// }
+
+		// for (let n of fibonacci()) {
+		//   if (n > 100) break;
+		//   console.log(n);
+		// }
+		// 
+		// 
+		// 
+		// function* objEntries (obj) {
+		// 	let propKeys = Reflect.ownKeys(obj);
+		// 	for( let propKey of propKeys){
+		// 		yield  [propKey,obj[propKey]]
+		// 	}
+		// }
+		// let jane = {first:'first',last:'last'}
+		// for( let [k,v] of objEntries(jane)){
+		// 	console.log(`${k}=>${v}`)
+		// }
+		// function* objectEntries() {
+		//   let propKeys = Object.keys(this);
+
+		//   for (let propKey of propKeys) {
+		//     yield [propKey, this[propKey]];
+		//   }
+		// }
+
+		// let jane = { first: 'Jane', last: 'Doe' };
+
+		// jane[Symbol.iterator] = objectEntries;
+
+		// for (let [key, value] of jane) {
+		//   console.log(`${key}: ${value}`);
+		// }
+		// 
+		// 
+		// function* numbers () {
+		// 	yield 1
+		// 	yield 2
+		// 	return 3
+		// 	yield 4
+		// }
+		// let numArr = [...numbers()]//[1,2]
+		// Array.from(numbers()) //[1,2]
+		// let [x, y] = numbers();
+		// x // 1
+		// y // 2
+		// 
+		// 
+		// 
+
+	// 
+	// var g = function* () {
+	//   try {
+	//     yield;
+	//   } catch (e) {
+	//     console.log('内部捕获', e);
+	//   }
+	// };
+
+	// var i = g();
+	// i.next();
+
+	// try {
+	//   i.throw('a');
+	//   i.throw('b');
+	// } catch (e) {
+	//   console.log('外部捕获', e);
+	// }
+	//内部捕获 a//catch只执行一次，下一次的就捕获不到了
+	//外部捕获 b
+	//
+	// function* gen() {
+	//   yield 1;
+	//   yield 2;
+	//   yield 3;
+	// }
+	// var g = gen();
+	// g.next()        // { value: 1, done: false }
+	// g.return('foo') // { value: "foo", done: true }
+	// g.next()        // { value: undefined, done: true }
+	// 
+	// function* foo(){
+	// 	yield 1
+	// 	yield 2
+	// }
+	// function* bar(){
+	// 	yield 3
+	// 	yield* foo()
+	// 	yield 4
+	// }
+	// for (let k of bar()){
+	// 	console.log(k)
+	// }
+
+	// let obj = {
+	// 	*gen () {}
+	// }
+	// 
+	// function* F(){
+	// 	this.a = 1;
+	// 	yield this.b = 2;
+	// 	yield this.c = 3;
+	// }
+	// let obj ={}
+	// let f = F.call(obj)
+	// f.next()
+	// console.log(obj.a,obj.b)//1,2
+	// function* F() {
+	//   this.a = 1;
+	//   yield this.b = 2;
+	//   yield this.c = 3;
+	// }
+	// var f = F.call(F.prototype);
+
+	// f.next();  // Object {value: 2, done: false}
+	// f.next();  // Object {value: 3, done: false}
+	// f.next();  // Object {value: undefined, done: true}
+	// // console.log(f.a,f.b)//1,2
+	// 
+	// 控制流
+	// let steps = [step1Func, step2Func, step3Func];
+
+	// function *iterateSteps(steps){
+	//   for (var i=0; i< steps.length; i++){
+	//     var step = steps[i];
+	//     yield step();
+	//   }
+	// }
+	// 
+	// function* iterEntries (obj) {
+	// 	let keys = Object.keys(obj)
+	// 	for(let key of keys){
+	// 		// console.log(key,obj[key])
+	// 		yield [key,obj[key]]
+	// 	}
+	// }
+	// let obj1 = {a:"a",b:'b'};
+	// // for (let [k,v]  of iterEntries(obj1)){
+	// // 	console.log(k,v)
+	// // }
+	// let it1 = iterEntries(obj1)
+	// console.log(it1.next())
+	// 
+	// thunkity
+	let chunkity = require('chunkity')
+	function ft (a,b,callback){
+		let sum = a + b;
+		callback(sum);
+		callback(sum);
+	}
+	let print = chunkity(ft);
+	ft(1,2)(print)
+    </script>
+    </body>
+</html>

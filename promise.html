@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function timeout(ms) {
+		// 	return new Promise((resolve,reject) => {
+		// 		setTimeout( resolve, ms)
+		// 	})
+		// }
+		// timeout(100).then(function(value){
+		// 	alert('success')
+		// },function(err){
+		// 	alert('error')
+		// })
+		// timeout(200).then( value  => { console.log(value)})
+
+		//promise新建后就会立即执行
+		 // let promise = new Promise( (resolve,reject) => { 
+		 // 	console.log('promise');
+		 // 	resolve();
+		 // } )
+		 // promise.then( value => { console.log(value)})
+		 // // then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+		 // console.log('sync')
+
+		 // //异步加载图片
+		 // function loadImgAsync (url) {
+		 // 	return new Promise(function(resolve,reject){
+		 // 		var image = new Image();
+
+		 // 		image.onload = function () {
+		 // 			resolve(image)
+		 // 		}
+		 // 		image.onerror = function () {
+		 // 			reject(new Error('could not load image at'+url))
+		 // 		}
+
+		 // 		image.src = url;
+		 // 	})
+		 // }
+
+		 //用Promise对象实现的 Ajax 操作的例子。
+		 // function getJSON (url) {
+		 // 	var promise = new Promise (function (resolve,reject){
+		 // 		var xhr = new XMLHttpRequest();
+		 // 		xhr.open('GET',url);
+		 // 		xhr.onreadystatechange = function(){
+		 // 			if(this.readystate !== 4){
+		 // 				return
+		 // 			}
+
+		 // 			if(this.status === 200){
+		 // 				resolve(this.response);
+		 // 			}else{
+		 // 				reject( new Error(this.statusText));
+		 				
+		 // 			}
+		 // 		}
+
+		 // 		xhr.responseType = 'json';
+		 // 		xhr.setRequestHeader('Accept','application/json') 
+		 // 		xhr.send();
+
+		 // 	})
+
+
+		 // 	return promise;
+		 // }
+
+		 // getJSON('./post.json').then(function(json){
+		 // 	console.log('Content:',json)
+		 // },function(error){
+		 // 	console.log(error)
+		 // })
+
+		// var p1 = new Promise(function (resolve, reject) {
+		// 	  setTimeout(() => reject(new Error('fail')), 3000)
+		// 	})
+
+		// var p2 = new Promise(function (resolve, reject) {
+		// 	  setTimeout(() => resolve(p1), 1000)
+		// 	})
+
+		// 	p2
+		// 	  .then(result => console.log(result))
+		// 	  .catch(error => console.log('catch',error))
+		// 	  
+		// var  promise = new Promise(function(resolve,reject){
+		// 	try {
+		// 		throw new Error('test');
+		// 	}catch(e){
+		// 		reject(e)
+		// 	}
+		// })
+		// promise.catch(e => {console.log(e)})
+		// // 同
+		// var promise = new Promise(function(resolve,reject){
+		// 	reject(new Error('test'))
+		// })
+		// promise.catch(e =>  {console.log(e)})
+		// 
+		// var promise = new Promise(function(resolve,reject){
+		// 	resolve('ok');
+		// 	throw new Error('test')
+		// })
+		// promise
+		// 	.then(value => {console.log(value)})
+		// 	.catch(e => {console.log(e)})
+
+		// Promise.all([])
+		const databasePromise = connectDatabase();
+
+		const booksPromise = databasePromise
+		  .then(findAllBooks);
+
+		const userPromise = databasePromise
+		  .then(getCurrentUser);
+
+		Promise.all([
+		  booksPromise,
+		  userPromise
+		])
+		.then(([books, user]) => pickTopRecommentations(books, user));
+
+		const p1 = new Promise((resolve, reject) => {
+			  resolve('hello');
+			})
+			.then(result => result);
+
+			const p2 = new Promise((resolve, reject) => {
+			  throw new Error('报错了');
+			})
+			.then(result => result);
+
+			Promise.all([p1, p2])
+			.then(result => console.log(result))
+			.catch(e => console.log(e));
+	</script>
+</body>
+</html>

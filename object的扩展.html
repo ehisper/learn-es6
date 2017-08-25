@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    	// 允许直接写入变量和函数，作为对象的属性和方法
+    	
+        let foo=1,obj = {
+        	foo,
+        	f(){}
+        }
+        let propKey = 'foo'
+        let newObj = {
+          [propKey]: true,
+          ['a' + 'bc']: 123
+        };
+
+        // Object.assign() 合并对象
+        // let tarObj = Object.assign({},{a:'a'},{a(){}})
+        // 
+        // $.extend({},{a:'a'},{a(){}})
+        // Object.extend = function(t,s){
+        //     for(k in s){
+        //         t[k] = s[k]
+        //     }
+        //     return t;
+        // }
+        // let tarObj = Object.extend({},{a:'aaa'})
+        // 
+        // 
+        //Object.create(tproObj[,obj]) 返回的对象合并obj,原型对象是tproObj
+        function Car (desc) {
+            this.desc = desc;
+            this.color = "red";
+        }
+         
+        Car.prototype = {
+            getInfo: function() {
+              return 'A ' + this.color + ' ' + this.desc + '.';
+            }
+        };
+        //instantiate object using the constructor function
+        var car =  Object.create(Car.prototype);
+        car.color = "blue";
+        // alert(car.getInfo());
+        // A blue undefined.
+        // 
+        var obj8 = { 100: 'a', 2: 'b', 7: 'c' };
+        for (let key of Object.keys(obj8)){console.log(key)}
+        for (let value of Object.values(obj8)){console.log(value)}
+        for (let [key,value] of Object.entries(obj8)){console.log(key,value)}
+            </script>
+        
+        
+
+    </body>
+</html>

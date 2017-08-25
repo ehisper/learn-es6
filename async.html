@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+  //   	var gen = function* () {
+		//   var f1 = yield readFile('/etc/fstab');
+		//   var f2 = yield readFile('/etc/shells');
+		//   console.log(f1.toString());
+		//   console.log(f2.toString());
+		// };
+		// // 写成async
+		// var async = async function () {
+		// 	var f1 = await readFile('/etc/fstab');
+		// 	var f2 = await readFile('/etc/shells');
+		// 	  console.log(f1.toString());
+		// 	  console.log(f2.toString());
+		// }
+		// 
+		// 
+
+		// function timeout (ms) {
+		// 	return new Promise((resolve) => {
+		// 		setTimeout(resolve,ms)
+		// 	})
+		// }
+		// async function asyncPrint (value,ms) {
+		// 	await timeout(ms);
+		// 	console.log(value)
+		// }
+		// asyncPrint('hello world', 50);
+
+		// async function asyncP () {
+		// 	// return 'hello';
+		// 	throw new Error('出错了')
+		// }
+		// asyncP()
+		// .then( v => {console.log(v)}, e => {console.log(e)})
+		// .catch( e => {console.log(e)})
+		// 
+		// async function f() {
+		//   return await 123;
+		// }
+
+		// f().then(v => console.log(v))
+		// 
+		// async function f () {
+		// 	// await new Promise(
+		// 	// 		(reslove,reject) => {reject('出错')}
+		// 	// 		)
+		// 	// 		}.catch( e =>  {console.log(e)})
+		// 	// await Promise.all([a(),b()])
+		// }
+		// f()
+		// .then(v=>{console.log(v)})
+		// .then(e=>{console.log(e)})
+		// 
+		// 异步generator
+		async function* gen() {
+  yield 'hello';
+}
+const genObj = gen();
+genObj.next().then(x => console.log(x));
+    </script>
+    </body>
+</html>

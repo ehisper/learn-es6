@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<script>
+    		let obj = {
+    			foo: 1,
+    			bar: 2,
+    			get baz(){
+    				return this.foo+this.bar;
+    			}
+    		}
+    		let obj2 = {
+    			foo: 1,
+    			bar: 5
+    		}
+    		console.log(Reflect.get(obj,'baz'))//3
+    		console.log(Reflect.get(obj,'baz',obj2))//6
+    		Reflect.deleteProperty(obj,'foo')
+
+    		const F = function(){}
+    		const f = new F('zs');
+    		const f = Reflect.constructor(F,['zs'])
+    	</script>
+    </body>
+</html>

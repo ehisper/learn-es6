@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    	// var arr =[1,2,3];
+    	// var iterator = arr[Symbol.iterator]()
+    	// console.log(iterator.next())
+
+    	// NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+    	// var $iterator = ITERABLE[Symbol.iterator]();
+		// var $result = $iterator.next();
+		// while (!$result.done) {
+		//   var x = $result.value;
+		//   // ...
+		//   $result = $iterator.next();
+		// }
+		// let set = new Set().add('a').add('b')
+		// let [x] = set;
+		// let [y,...rest] = set
+		// console.log(x,y,rest)//a
+		// 
+		// let fn = function* () {
+		// 	yield 1;
+		// 	yield* [2,3];
+		// 	yield 4;
+		// }
+		// let fnYield = fn();
+		// console.log(fnYield.next())
+		// console.log(fnYield.next())
+		// console.log(fnYield.next())
+		// console.log(fnYield.next())
+		// console.log(fnYield.next())
+		// 字符串的Iterator接口
+		// let hi = 'hi'
+		// let hiIterator = hi[Symbol.iterator]();
+
+		// console.log(hi[Symbol.iterator])
+
+		// console.log(hiIterator.next())
+		// let llo = new String('llo')
+		// llo[Symbol.iterator] = function() {
+		//   return {
+		//     next: function() {
+		//       if (this._first) {
+		//         this._first = false;
+		//         return { value: "bye", done: false };
+		//       } else {
+		//         return { done: true };
+		//       }
+		//     },
+		//     _first: true
+		//   };
+		// };
+		// console.log([...llo],llo)
+		// var myIterable = {};
+
+		// myIterable[Symbol.iterator] = function* () {
+		//   yield 1;
+		//   yield 2;
+		//   yield 3;
+		// };
+		// console.log(myIterable,[...myIterable] )// [1, 2, 3]
+		// let obj = {
+		//   * [Symbol.iterator]() {
+		//     yield 'hello';
+		//     yield 'world';
+		//   }
+		// };
+
+		// for (let x of obj) {
+		//   console.log(x);
+		// }
+
+		// const arr = ['red', 'green', 'blue'];
+
+		// const obj2 = {};
+		// obj2[Symbol.iterator] = arr[Symbol.iterator].bind(arr);
+
+		// for(let v of obj2) {
+		//   console.log(v); // red green blue
+		// }
+		// 
+		// 
+		// let arrayLike = { length: 2, 0: 'a', 1: 'b' };
+
+		// // 报错
+		// // for (let x of arrayLike) {
+		// //   console.log(x);
+		// // }
+
+		// // 正确
+		// for (let x of Array.from(arrayLike)) {
+		//   console.log(x);
+		// }
+		// 
+		// 对于普通的对象，for...in循环可以遍历键名，for...of循环会报错
+		let es6 = {
+		  edition: 6,
+		  committee: "TC39",
+		  standard: "ECMA-262"
+		};
+		// for (let k of Object.keys(es6)){
+		// 	console.log(k,es6[k])
+		// }
+		function* entries (obj) {
+			for(let k of Object.keys(obj)){
+				yield [k,obj[k]]
+			}
+		}
+		for(let [k,v] of entries(es6)){
+			console.log(`${k}=>${v}`)
+		}
+	</script>
+    </body>
+</html>
