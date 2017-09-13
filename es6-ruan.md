@@ -281,7 +281,19 @@
 	* 原生构造函数的继承
 	* Mixin 模式：将多个类的接口“混入”（mix in）另一个类
 ## decorator修饰器
-	* 
+	* 是一个对类进行处理的函数。修饰器函数的第一个参数，就是所要修饰的目标类。
+	* 方法的修饰
+		- 修饰器函数一共可以接受三个参数，第一个参数是所要修饰的目标对象，即类的实例（类的修饰时target参数指的是类本身）；第二个参数是所要修饰的属性名，第三个参数是该属性的描述对象。
+	* 只能用于类和累的方法，不用于函数存在函数提升
+	* core-decorators.js是一个第三方模块
+		- autobind、readonly、override、deprecate或deprecated、suppressWarnings
+	* 使用修饰器实现自动发布事件postal
+	* Mixins
+	* Trait,一种修饰器
+	* babel已支持
+## module语法
+	* 严格模式
+	* export
 
 
 

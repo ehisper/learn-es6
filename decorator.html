@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// @testable(true)
+		// class A {
+
+		// }
+		// function testable (target){
+		// 	target.testable = true
+		// }
+		// console.log(A.testable)//提案，chrome实现不了
+		// function testable (testable){
+		// 	return function (target) {
+		// 		target.testable = testable
+		// 	}		
+		// }
+		// console.log(A.testable)//提案，chrome实现不了
+		// 
+		// function mixins (...list){
+		// 	return function (target) {
+		// 		Object.assign(target.prototype,...list)
+		// 	}		
+		// }
+		// const Foo =  {
+		// 	foo () {console.log('foo')}
+		// }
+		// @mixins(Foo)
+		// class A {}
+		// var a = new A();
+		// a.foo()//foo
+
+		// class myReactComponents extends React.components {}
+		// export default connect (mapStateToProps,mapDispatchToProps)(myReactComponents)
+		// 同
+		// @connect(mapStateToProps,mapDIspatchToProps)
+		// export defalut class myReactComponents extends  React.components{}
+		// 
+		// class P {
+		// 	@readonly
+		// 	name () {
+		// 		return `${this.first} ${this.last}`
+		// 	}
+		// }
+		// function readonly (target.prototype,name,descriptor) {
+		// 	 // {
+		// 	  //   value: specifiedFunction,
+		// 	  //   enumerable: false,
+		// 	  //   configurable: true,
+		// 	  //   writable: true
+		// 	  // };
+		// 	descriptor.writable = false
+		// 	return descriptor;
+
+		// 		readonly(Person.prototype, 'name', descriptor);
+		// 		// 类似于
+		// 		Object.defineProperty(Person.prototype,'name',descriptor)
+		// }
+		// 
+		class Person {
+		  @nonenumerable
+		  get kidCount() { return this.children.length; }
+		}
+
+		function nonenumerable(target, name, descriptor) {
+		  descriptor.enumerable = false;
+		  return descriptor;
+		}
+		var p = new Person()
+		console.log(p.kidCount())
+	</script>
+</body>
+</html>
