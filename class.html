@@ -150,17 +150,56 @@
 		// const { printName } = logger;
 		// printName(); // TypeError: Cannot read property 'print' of undefined
 		// 
-		class F {
-			static aaa () {
-				return 'aaa'
-			}
-		}
-		class FE extends F {
-			static aaa () {
-				return super.aaa() + 'bbb'
-			}
-		}
-		console.log(FE.aaa())
+		// class F {
+		// 	static aaa () {
+		// 		return 'aaa'
+		// 	}
+		// }
+		// class FE extends F {
+		// 	static aaa () {
+		// 		return super.aaa() + 'bbb'
+		// 	}
+		// }
+		// console.log(FE.aaa())
+     
+        //继承
+        // class Point {}
+        // class C extends Point {
+        //      constructor(x, y, color) {
+        //         super(x, y); // 调用父类的constructor(x, y)
+        //         this.color = color;
+        //       }
+
+        //       toString() {
+        //         return this.color + ' ' + super.toString(); // 调用父类的toString()
+        //       }
+
+        // }
+        // let p = new C();
+       // class A {
+       //      constructor() {
+       //      console.log(new.target.name);
+       //    }
+       //  }
+       //  class B extends A {
+       //    // constructor() {
+       //    //   super();
+       //    // }
+       //  }
+       //  new A() // A
+       //  new B() // B
+       //  
+       class A {
+
+       }
+       A.prototype.x = 2
+       class B extends A {
+            constructor () {
+                super()
+                console.log(super.x)
+            }
+       }
+       var b = new B()
     </script>
     </body>
 </html>

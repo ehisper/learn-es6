@@ -241,8 +241,48 @@
 	* for await ... of
 	* 异步Generator函数 是async与generator的结合
 ## Class的基本用法
-	* 类的所有方法都定义在类的prototype属性上面。
-		- 类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
+	* 类
+		- 类的所有方法都定义在类的prototype属性上面。
+		- 类的内部所有定义的方法，都是不可枚举的（non-enumerable）。	
+		- 类和模块中默认为严格模式
+		- constructor方法是类的默认方法,通过new命令生成对象实例时，自动调用,constructor方法默认返回实例对象（即this）
+		- 类必须使用new调用,否则会报错
+		- class表达式
+	* 不存在变量提升
+	* 私有方法
+	* 私有属性 es6暂时不支持
+	* this的指向 默认指向类的实例，但是不能单独使用
+	* class的存值函数和取值函数 set get 
+	* class的generator方法 *[Symbol.iterator]
+	* class的静态方法
+		- 类相当于实例的原型(this为类) static 直接通过类来调用
+		- 父类的静态方法，可以被子类继承。
+		- 静态方法也是可以从super对象上调用的。
+	* class的静态属性 和实例属性
+		- Class 本身的属性 Class 内部只有静态方法，没有静态属性。
+	* new target
+		- Class 内部调用new.target，返回当前 Class。
+		- 子类继承父类时，new.target会返回子类。
+## class的继承
+	* class可以通过extends关键字实现继承
+	* Object.getPrototypeOf方法可以用来从子类上获取父类。判断，一个类是否继承了另一个类。
+	* super关键字既可以当作函数使用，也可以当作对象使用
+		- super作为函数调用时，代表父类的构造函数,ES6 要求，子类的构造函数必须执行一次super函数。作为函数时，super()只能用在子类的构造函数之中
+		- super作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。
+		- 通过super调用父类的方法时，super会绑定子类的this
+		- 果通过super对某个属性赋值，这时super就是this，赋值的属性会变成子类实例的属性。
+		- super作为对象，用在静态方法之中，这时super将指向父类
+	* 类的prototype和__proto__
+		- 子类的__proto__属性，表示构造函数的继承，总是指向父类。
+		- 子类prototype属性的__proto__属性，表示方法的继承，总是指向父类的prototype属性。
+	* extends的继承目标
+	* 实例的__proto__
+		- 子类实例的__proto__属性的__proto__属性，指向父类实例的__proto__属性。
+	* 原生构造函数的继承
+	* Mixin 模式：将多个类的接口“混入”（mix in）另一个类
+## decorator修饰器
+	* 
+
 
 
 
