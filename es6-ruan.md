@@ -292,11 +292,49 @@
 	* Trait,一种修饰器
 	* babel已支持
 ## module语法
-	* 严格模式
-	* export
+	* 严格模式 
+		- es6模块化编译阶段执行的，在代码运行之前（静态执行）
+	* export命令定义了模块的对外接口
 		- 输出的接口，与其对应的值是动态绑定关系
 		- export命令只能处于模块顶层
-
+	* import命令加载模块
+		- 具有提升效果，会提升到整个模块的头部，首先执行
+	* 模块的整体加载
+		- import * as allExport  from 'a',不允许运行时修改(忽略defalut)
+	* export default
+	 	- 命令只能使用一次
+	 	- 后面不能跟变量声明语句。
+	 * export与import的符合写法
+	 	- export {a,b} from './module'
+	 * 模块继承
+	 * import()函数，完成动态加载
+## momdule的加载实现
+	* 浏览器加载
+		- script标签加载
+			* async和defer
+	* es6模块与CommonJS模块
+		* CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+		* CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+	* node、commonjs、es6模块相互加载
+## 编码风格
+	* 块级作用域
+		- let代替var
+		- 建议使用const
+	* 字符串
+		- 使用单引号或反引号
+	* 解构赋值
+	* 对象
+		- 单行定义的对象，最后一个成员不以逗号结尾。多行定义的对象，最后一个成员以逗号结尾。
+		- 对象尽量静态化，如果要添加属性，建议Object.assign()
+	* 数组
+		- 使用扩展运算符拷贝数组 var arr = [...arr1](深拷贝)
+		- 使用Array.from()将类数组转换为数组 const nodes = Array.from(foo);
+	* 函数
+		- 箭头函数
+		- 参数默认值
+		- argument使用...args代替
+	* Map结构
+	
 
 
 
